@@ -1,0 +1,78 @@
+confirm("are you ready to play hangman?");
+document.addEventListener("DOMContentLoaded", function () {
+
+
+    var wins = 0;
+    var remainingLetters = 0;
+    var remainingGuesses = 0;
+    var maxGuess = 9;
+    var answer = [""];
+    var letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+    var lettersGuessed = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+    var words = ["football", "basketball", "baseball", "hockey", "soccer"];
+    var guessWord = [];
+    var currentWord = ["word"];
+    var positions = [];
+    var playholder = "";
+
+
+    function resetGame() {
+        remainingGuesses = maxGuess;
+        gameStarted = false;
+
+        lettersGuessed = [];
+        guessWord = [];
+
+        document.getElementById("football").src = "assets/images/browns.jpg";
+        for (var i = 0; i < words[currentWord].length; i++) {
+            guessWord.push("_");
+        }
+    }
+
+
+    document.onkeyup = function (event) {
+        if (event.keyCode >= 65 && event.keyCode <= 90) {
+            lettersGuessed(event.key);
+        }
+    }
+
+    var word = words[Math.floor(Math.random() * words.length)];
+
+    function makeGuess(letters) {
+        if (remainingGuesses > 0) {
+            if (!gameStarted) {
+                gameStarted = true;
+            }
+            if (lettersGuessed.indexOf(letters) === -1) {
+                lettersGuessed.push(letters);
+                evulateGuess(letters);
+                document.getElementById("lg").value = "lettersGuessed";
+            }
+        }
+    }
+    function evulateGuess(letters) {
+        var positions = [];
+        for (var i = 0; i < words.currentWord.length; i++); {
+            if (words[currentWord][i] === letters) {
+                positions.push(i);
+            }
+        }
+
+        if (positions.length <= 0) {
+            remainingGuesses--;
+        }
+        else {
+            for (var i = 0; i < positions.length; i++) {
+                guessWord[positions[i]] = letters;
+            }
+        }
+    }
+    function checkWin() {
+        if (guessWord.indexOf("_") === -1) {
+            document.getElementById("assets/images.soccer.jpg");
+            wins++;
+            hasFinished = true;
+            documnent.getElementById("Wins").value = "wins ++";
+        }
+    }
+})

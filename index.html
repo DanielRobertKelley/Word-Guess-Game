@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<title>Hangman</title>
+<div class="header">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg"
+        crossorigin="anonymous">
+    <link rel="stylesheet" type "text/css" href="assets/css/style.css">
+    <h1>Welcome to Hangman Sports Edition</h1>
+    <h2>Press New Game to Start!</h2>
+    </header>
+
+    <body>
+        <div class="newGame">
+            <div class="row">
+                <div class="col-lg-12">
+                    <button id="new-game-button">
+                        <i class="fas fa-football-ball"></i>
+                        Start a New Game
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="jumbotron">
+            <div class="row">
+                <div class="col-lg-3">
+                    <img src="assets/images/bg.jpg" width="300px" height="400px">
+                </div>
+                <div class="col-lg-3">
+                    <p>Letters Guessed:</p>
+                    <span id="lettersGuessed"></span>
+                    <hr>
+                    <br>
+                    <br>
+                    <p>"_ _ _ _ _ _ _"</p>
+                    <span id="placeholders"></span>
+                    <span id ="pickedword"></span>
+                </div>
+                <div class="col-lg-6">
+                    <p>Wins:</p>
+                    <span id="wins">0</span>
+                    <hr>
+                    <p>Loses:</p>
+                    <span id="loses">0</span>
+                    <hr>
+                    <p>Remaining Guesses:</p>
+                    <span id="remainingGuesses">9</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Connect With Me</p>
+                    <a href="https://github.com/DanielRobertKelley" i class="fab fa-github"></a>
+                    <a href="https://twitter.com/DbigtunaK" i class="fab fa-twitter"></a>
+                    <a href="https://www.linkedin.com/in/daniel-kelley-6003b532/" i class="fab fa-linkedin"></a>
+                </div>
+
+            </div>
+        </div>
+
+
+        <script type="text/javascript" src="assets/javascript/game.js"></script>
+
+
+    </body>
+
+</html>
