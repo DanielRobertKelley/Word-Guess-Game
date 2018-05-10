@@ -22,63 +22,72 @@ var placeholder = [];
 
 
 
-    function newGame() {
-        gameRunning = true;
-        remainingGuesses = 9;
-        letters = [];
-        lettersGuessed = [];
-        pickWordPlace = [];
-console.log("event")
-        pickedWord = words[Math.floor(Math.random() * words.length)];
+function newGame() {
+    gameRunning = true;
+    remainingGuesses = 9;
+    letters = [];
+    lettersGuessed = [];
+    pickWordPlace = [];
+    console.log("event")
+    pickedWord = words[Math.floor(Math.random() * words.length)];
 
-        for (var i = 0; i < pickedWord.length; i++) {
-            if (pickedWord[i] === "   ") {
-                pickedWordPlace.push("    ");
-            } else {
-                pickedWordPlace.push("_");
-            }
+    for (var i = 0; i < pickedWord.length; i++) {
+        if (pickedWord[i] === "   ") {
+            pickedWordPlace.push("    ");
+        } else {
+            pickedWordPlace.push("_");
         }
-        
-
-        $guessesRemaining.textcontent = guessRemaining --;
-        $placeholder.textContent = pickedWord.join("");
-        $lettersGuessed.textContent = lettersGuessed;
     }
 
-    function lettersGuessed(letters) {
-        if (gameRunning === true && lettersGuessed.indexOf(letters) === -1) {
 
-            guessedLetters.push(letters);
+    $guessesRemaining.textcontent = guessRemaining--;
+    $placeholder.textContent = pickedWord.join("");
+    $lettersGuessed.textContent = lettersGuessed;
+}
 
-            for (var i = 0; i < pickedWord; i++) {
-                if (pickedWord[i].toLowerCase() === letters.toLowerCase()) {
-                    pickWordPlace[i] = pickedWord[i];
-                }
+function lettersGuessed(letters) {
+    if (gameRunning === true && lettersGuessed.indexOf(letters) === -1) {
+
+        guessedLetters.push(letters);
+
+        for (var i = 0; i < pickedWord; i++) {
+            if (pickedWord[i].toLowerCase() === letters.toLowerCase()) {
+                pickWordPlace[i] = pickedWord[i];
             }
-            placeholder.textcontent = pickedWordPlace.join("");
+        }
+        placeholder.textcontent = pickedWordPlace.join("");
+    }
+    else {
+        if (!gameRunning) {
+            alert("Game hasnt started, click on new game to start.");
         }
         else {
-            if (!gameRunning) {
-                alert("Game hasnt started, click on new game to start.");
-            }
-            else {
-                alert("lettered already guessed");
-            }
+            alert("lettered already guessed");
         }
     }
+}
+function checkLetters(lettersGuessed) {
+    for (var j = 0; j < pickedWord.length; j++) {
+        if (lettersGuessed[j] == pickedWord) {
+            guessesRemaining === -1;
+        }
+        else {
+            guessesRemaing ===0;
+        }
+    }
+}
 
-    function checkWin (pickedWord) {
-        while (remainingGuesses >0  && length != lettersGuessed){
+function checkWin(pickedWord) {
+    while (remainingGuesses > 0 && length != lettersGuessed) {
         if (guessRemaining == 0) {
             alert("Game Over, answer was" + pickedWord);
         }
-        else {
+    }
+    document.onkeyup = function (event) {
+        console.log(event)
+        if (event.keyCode >= 65 && event.keyCode <= 90) {
+            lettersGuessed[event.key];
         }
     }
-document.onkeyup = function (event) {
-    console.log(event)
-    if (event.keyCode >= 65 && event.keyCode <= 90) {
-        lettersGuessed[event.key];
-    }
+    newGameButton.addEventListener("click", newGame)
 }
-newGameButton.addEventListener("click", newGame);
